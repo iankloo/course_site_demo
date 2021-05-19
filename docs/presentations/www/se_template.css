@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Archivo');
+
+.title-slide {
+  background-image: url('img/westpoint_logo.gif'), url('img/se_main_logo.png');
+  background-position: top 20px left 20px , top 20px right 20px;
+  background-size:  auto 15%;
+  background-color:#f0f0f0;
+  text-shadow: none;
+}
+
+.inverse h1, .inverse h2, .inverse h3  {
+  color: black;
+}
+
+.gray {
+  background-color:#f0f0f0;
+}
+
+body { font-family: 'Roboto', sans-serif;}
+
+.remark-slide-content {
+  font-size: 22px;
+  background-color:#f0f0f0;
+}
+
+.small {
+  font-size: .9em;
+}
+
+ol li p{
+  margin-bottom: 2px !important;
+}
+
+ul li p{
+  margin-bottom: 2px !important;
+}
+
+.remark-code {
+  font-size: 14px;
+}

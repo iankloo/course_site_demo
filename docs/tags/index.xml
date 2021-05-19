@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on SE375 Course Website</title>
-    <link>https://github.com/iankloo/course_site_demo/tags/</link>
+    <link>https://github.com/iankloo/course_site_demo/docs/tags/</link>
     <description>Recent content in Tags on SE375 Course Website</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://github.com/iankloo/course_site_demo/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://github.com/iankloo/course_site_demo/docs/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

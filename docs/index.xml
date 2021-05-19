@@ -2,36 +2,36 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SE375 Course Website</title>
-    <link>https://github.com/iankloo/course_site_demo/</link>
+    <link>https://github.com/iankloo/course_site_demo/docs/</link>
     <description>Recent content on SE375 Course Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://github.com/iankloo/course_site_demo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://github.com/iankloo/course_site_demo/docs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lecture 1</title>
-      <link>https://github.com/iankloo/course_site_demo/2021/05/17/lecture-1/</link>
+      <link>https://github.com/iankloo/course_site_demo/docs/2021/05/17/lecture-1/</link>
       <pubDate>Mon, 17 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://github.com/iankloo/course_site_demo/2021/05/17/lecture-1/</guid>
+      <guid>https://github.com/iankloo/course_site_demo/docs/2021/05/17/lecture-1/</guid>
       <description>  The first lecture for SE375 will cover introductions, a review of the syllabus, and an overview of the course.
 Course Objectives:  Understand the goals, objectives, organization, and administrative requirements for SE375 • Check that course level requirements are met (R installed, textbook on hand) Review basic concepts of statistics Review confidence intervals   Slides     </description>
     </item>
     
     <item>
       <title>About</title>
-      <link>https://github.com/iankloo/course_site_demo/about/</link>
+      <link>https://github.com/iankloo/course_site_demo/docs/about/</link>
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       
-      <guid>https://github.com/iankloo/course_site_demo/about/</guid>
+      <guid>https://github.com/iankloo/course_site_demo/docs/about/</guid>
       <description>The Course: SE375 Statistics for Engineers This course is an integral part of the Systems Engineering major that emphasizes both the statistical analyses of data and a statistical methodology important to systems analysis and design. The over-arching course goal is to develop cadets into critical consumers and providers of statistical information as it relates to the techniques, activities, and modeling applications that typify systems engineering concerns.. The course builds on the core probability and statistics course and introduces statistics applications fundamental to the design and analysis of simulations and engineering systems.</description>
     </item>
     
     <item>
       <title>Stats Concepts</title>
-      <link>https://github.com/iankloo/course_site_demo/stats_concepts/</link>
+      <link>https://github.com/iankloo/course_site_demo/docs/stats_concepts/</link>
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       
-      <guid>https://github.com/iankloo/course_site_demo/stats_concepts/</guid>
+      <guid>https://github.com/iankloo/course_site_demo/docs/stats_concepts/</guid>
       <description>MA206 (which is a pre-requisite to this course) covers a large variety of statistical concepts. The resources here are meant to reenforce those concepts that are especially important for SE370. These resources are here to help you develop your foundation.
 Hypothesis Testing  Linear Regression  </description>
     </item>

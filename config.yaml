@@ -1,4 +1,4 @@
-baseurl: "https://github.com/iankloo/course_site_demo/docs/"
+baseurl: "https://github.com/iankloo/course_site_demo/blob/main/docs/"
 publishDir: "docs"
 languageCode: en-us
 title: SE375 Course Website

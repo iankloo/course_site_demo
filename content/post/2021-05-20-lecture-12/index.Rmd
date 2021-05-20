@@ -1,0 +1,21 @@
+---
+title: "Lecture 12"
+category: "Module 2"
+author: "Ian Kloo"
+date: 2021-05-17
+description: "Beginning of the ANOVA block."
+---
+
+This lesson will transition us from the review block to a completely new topic: Analysis of Variance (ANOVA).    
+
+### Course Objectives:
+
+- Understand the concept of ANOVA and Completely Randomized Designs
+- Understand the statistical model of ANOVA
+- Use the F-test and be able to read an F-table
+
+### [Slides](/presentations/lecture_12.html)
+
+### [Notebook (HTML)](lesson_12.html)
+
+<h3><a href = 'lesson_12.ipynb' download>Notebook (Jupyter)</a>

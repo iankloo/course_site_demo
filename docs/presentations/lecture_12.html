@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>ANOVA - Completely Randomized Design</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ian Kloo" />
+    <meta name="date" content="2019-09-18" />
+    <script src="lecture_12_files/header-attrs-2.8.1/header-attrs.js"></script>
+    <link href="lecture_12_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <script src="lecture_12_files/kePrint-0.0.1/kePrint.js"></script>
+    <link href="lecture_12_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="www/se_template.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# ANOVA - Completely Randomized Design
+### Ian Kloo
+### 2019-09-18
+
+---
+
+
+
+
+## Where we are 
+
+- Block 1: Hypothesis testing and regression
+- &lt;strong&gt;Block 2: Analysis of Variance (ANOVA)
+- WPR&lt;/strong&gt;
+- Block 3: Design of Experiments (DOE)
+- Block 4: Statistical Quality Control (SQC)
+
+---
+
+## Analysis of Variance
+
+- Analysis of variance (ANOVA) is "a method of decomposing total variability in a set of observations...into component sums of squares that are associated with specific defined sources of variation" (Montgomery, p. 787)
+
+- In this lesson, we will use ANOVA to test for treatment effects in experiments
+
+- Ex) (Book example, p. 541) Does increasing the % of hardwood in a paper bag make it stronger?
+
+---
+
+## ANOVA Terminology
+
+- Factor = the thing that is changed in your experiment (the independent variable)
+    - Ex1) The % of hardwood
+- Treatments = the levels of the factor
+    - Ex1) 5%, 10%, 15%, 20% (4 levels)
+- Replicates = observations
+    - Ex1) Observed tensile strength
+
+---
+
+## ANOVA and Randomization
+
+- We will be discussing ANOVA in the context of an experiment
+
+- Randomization is critical!
+
+    - Observations must be taken in a random order
+
+- Treatments must also be applied as uniformly as possible (no bias)
+
+- We call experiments that meet these requirements Completely Randomized Design (CRD)
+
+---
+
+## How ANOVA Works
+
+- We often look at data like this:
+
+
+```
+##    concentration observation
+## 1              5           7
+## 2              5           8
+## 3              5          15
+## 4              5          11
+## 5              5           9
+## 6              5          10
+## 7             10          12
+## 8             10          17
+## 9             10          13
+## 10            10          18
+## 11            10          19
+## 12            10          15
+## 13            15          14
+## 14            15          18
+## 15            15          19
+## 16            15          17
+## 17            15          16
+## 18            15          18
+## 19            20          19
+## 20            20          25
+## 21            20          22
+## 22            20          23
+## 23            20          18
+## 24            20          20
+```
+
+---
+
+## How ANOVA Works
+
+- But we could also look at it like this:
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Concentration&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Observations&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 3 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 4 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 5 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 6 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 10% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 15% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 20% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+## How ANOVA Works
+
+- Or, like this:
+
+&lt;img src="lecture_12_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## How ANOVA Works
+
+- Or, like this:
+
+&lt;img src="lecture_12_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## ANOVA
+
+- We want to test if the treatment has an effect...
+
+- We can think of this as a linear model:
+
+`$$Y_{ij}=\mu+\tau_{i}+\epsilon_{ij}$$`
+
+- Where each treatment (i) has observations (j)
+
+---
+
+## ANOVA Assumptions
+
+- Observations are independent (addressed via randomization during experiment)
+
+- Residuals ($ \epsilon $) are NID
+    - Residual plots
+    - Shapiro-Wilk test `shapiro.test()`
+
+- Treatment groups have equal variance (homoscedasticity)
+    - Bartlett test `bartlett.test()`
+
+
+---
+
+## ANOVA
+
+- If we want to test if the treatment has an effect, our hypothesis test is:
+
+`$$H_{0}: \tau_{1}=\tau_{2}=...=\tau_{a}=0$$`
+
+`$$H_{a}: \tau_{i}\neq0 \text{ for at least one }i$$`
+
+---
+
+## ANOVA
+
+- To test this hypothesis, we need a statistical test: F-test
+
+- The F-statistic is calculated by comparing 2 different kinds of variation in your data:
+
+    - Variation caused by the treatment = `\(SS_{\text{Treatments}}\)`
+    - Variation caused by the error term = `\(SS_{E}\)`
+
+`$$F_{0} = \frac{\frac{SS_{\text{Treatments}}}{(a-1)}}{\frac{SS_{E}}{a(n-1)}}$$`
+
+- If `\(F_{0}\)` is large, much of the variation in your data is caused by the treatment
+
+    - Reject the null hypothesis, concluding your treatment has some effect
+
+---
+
+## ANOVA
+
+&lt;center&gt;
+  &lt;img src = 'www/img/anova_formulas.png' style = 'height: 500px'&gt;
+&lt;/center&gt;
+
+---
+
+## ANOVA: F-Statistic
+
+- We will use a new statistic to compare our test statistic to: F-statistic
+
+- Recall, our test statistic is the ratio of 2 variances
+
+- The F-statistic is a distribution created by dividing two variances
+
+- It tells us how likely (or unlikely) it is that we would see our calculated `\(F_{0}\)` under the null hypothesis
+
+---
+
+## ANOVA: F-Statistic
+
+- Using the F-table requires calculation of the degrees of freedom:
+
+    - df for Numerator = df for `\(SS_{\text{Treatments}}\)` = `\(a-1\)`
+
+    - df for Denominator = df for `\(SS_{E}\)` = `\(a(n-1)\)`
+
+---
+
+## ANOVA: F-Statistic
+
+- F-table for `\(\alpha = 0.01\)`
+
+&lt;center&gt;
+  &lt;img src = 'www/img/p_750.png'&gt;
+&lt;/center&gt;
+
+---
+
+## ANOVA Example
+
+- Use ANOVA to test if increasing the concentration of hardwood has an effect on the strength of paper bags
+- Use `\(\alpha = 0.01\)`
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+&lt;tr&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Concentration&lt;/div&gt;&lt;/th&gt;
+&lt;th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="6"&gt;&lt;div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; "&gt;Observations&lt;/div&gt;&lt;/th&gt;
+&lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 1 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 2 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 3 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 4 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 5 &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 6 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 10% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 23 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 15% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 20% &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+## ANOVA Example
+
+`$$H_{0}: \tau_{1}=\tau_{2}=...=\tau_{a}=0$$`
+- Or, the null hypothesis is that increasing the concentration of hardwood has no effect on the strength of a paper bag
+
+`$$H_{a}: \tau_{i}\neq0 \text{ for at least one }i$$`
+
+- Or, the alternative hypothesis is that increasing the concentration of hardwood has some effect on the strength of a paper bag
+
+---
+
+## ANOVA Example
+
+- Calculate `\(SS_{\text{T}}\)`
+
+`\(SS_{\text{T}} = 7^2 + 8^2 + ... + 20^2 - \frac{383^2}{24}\)`
+
+
+```r
+SSt &lt;- sum(df$observation^2) - (sum(df$observation)^2)/nrow(df)
+SSt
+```
+
+```
+## [1] 512.9583
+```
+
+---
+
+## ANOVA Example
+
+- Calculate `\(SS_{\text{Treatments}}\)`
+
+`\(SS_{\text{Treatments}} = \frac{60^2+94^2+102^2+127^2}{6} - \frac{383^2}{24}\)`
+
+
+```r
+SStreatments &lt;- (sum(df$observation[df$concentration == 5])^2 + sum(df$observation[df$concentration == 10])^2 +
+  sum(df$observation[df$concentration == 15])^2 + sum(df$observation[df$concentration == 20])^2) / 6 - 
+  (sum(df$observation)^2)/nrow(df)
+
+SStreatments
+```
+
+```
+## [1] 382.7917
+```
+
+---
+
+## ANOVA Example
+
+- Calculate `\(SS_{E}\)`
+
+`\(SS_{E} = SS_{\text{T}} - SS_{\text{Treatments}} = 512.96 - 382.79 = 130.17\)`
+
+
+```r
+SSe &lt;- SSt - SStreatments
+
+SSe
+```
+
+```
+## [1] 130.1667
+```
+
+---
+
+## ANOVA Example
+
+- Calculate `\(F_{0}\)`
+
+`\(F_{0} = \frac{\frac{SS_{\text{Treatments}}}{(a-1)}}{\frac{SS_{E}}{a(n-1)}}=\frac{\frac{382.79}{4-1}}{\frac{130.17}{4(6-1)}}\)`
+
+
+```r
+a &lt;- 4
+n &lt;- 6
+F0 &lt;- (SStreatments/(a-1))/(SSe/(a*(n-1)))
+F0
+```
+
+```
+## [1] 19.60521
+```
+
+---
+
+## ANOVA Example
+
+&lt;center&gt;
+  &lt;img src = 'www/img/p_750_example.png'&gt;
+&lt;/center&gt;
+
+
+---
+
+## ANOVA Example
+
+- Conclusion: our calculated our calculated test statistic is larger than the `\(F_{\alpha}\)` (19.60 &gt; 4.94), so we can reject the null hypothesis, concluding that the concentration of hardwood has an effect on the strength of plastic bags.
+
+&lt;center&gt;
+  &lt;img src = 'www/img/anova_table.png'&gt;
+&lt;/center&gt;
+
+---
+
+## ANOVA Example
+
+- In R:
+
+
+```r
+anova_model &lt;- aov(observation ~ concentration, df)
+
+summary(anova_model)
+```
+
+```
+##               Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## concentration  3  382.8  127.60   19.61 3.59e-06 ***
+## Residuals     20  130.2    6.51                     
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+---
+
+## ANOVA Example
+
+- Checking assumptions:
+
+
+```r
+bartlett.test(observation ~ concentration, df)
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  observation by concentration
+## Bartlett's K-squared = 1.1352, df = 3, p-value = 0.7686
+```
+
+
+- We fail to reject the null hypothesis that the variances of the samples are the same, concluding that it is plausible that the sample variances are, in fact, equal.  This satisfies our homoscedasticity assumption
+
+---
+
+## ANOVA Example
+
+
+```r
+shapiro.test(anova_model$residuals)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  anova_model$residuals
+## W = 0.96624, p-value = 0.5757
+```
+
+
+```r
+plot(anova_model, which = 1)
+```
+
+&lt;img src="lecture_12_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+
+- Residuals appear to be NID
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

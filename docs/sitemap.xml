@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://iankloo.github.io/course_site_demo/2021/05/17/lecture-1/</loc>
+    <loc>/2021/05/17/lecture-1/</loc>
     <lastmod>2021-05-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://iankloo.github.io/course_site_demo/post/</loc>
+    <loc>/post/</loc>
     <lastmod>2021-05-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://iankloo.github.io/course_site_demo/</loc>
+    <loc>/</loc>
     <lastmod>2021-05-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://iankloo.github.io/course_site_demo/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2016-05-05T21:48:51-07:00</lastmod>
   </url><url>
-    <loc>https://iankloo.github.io/course_site_demo/stats_concepts/</loc>
+    <loc>/stats_concepts/</loc>
     <lastmod>2016-05-05T21:48:51-07:00</lastmod>
   </url><url>
-    <loc>https://iankloo.github.io/course_site_demo/categories/</loc>
+    <loc>/categories/</loc>
   </url><url>
-    <loc>https://iankloo.github.io/course_site_demo/tags/</loc>
+    <loc>/tags/</loc>
   </url>
 </urlset>

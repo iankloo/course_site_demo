@@ -1,5 +1,6 @@
 baseurl: "https://iankloo.github.io/course_site_demo/"
 publishDir: "docs"
+relativeURLs: true
 languageCode: en-us
 title: SE375 Course Website
 theme: hugo-lithium

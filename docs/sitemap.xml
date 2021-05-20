@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://github.com/iankloo/course_site_demo/blob/main/docs/2021/05/17/lecture-1/</loc>
+    <loc>https://iankloo.github.io/course_site_demo/2021/05/17/lecture-1/</loc>
     <lastmod>2021-05-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://github.com/iankloo/course_site_demo/blob/main/docs/post/</loc>
+    <loc>https://iankloo.github.io/course_site_demo/post/</loc>
     <lastmod>2021-05-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://github.com/iankloo/course_site_demo/blob/main/docs/</loc>
+    <loc>https://iankloo.github.io/course_site_demo/</loc>
     <lastmod>2021-05-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://github.com/iankloo/course_site_demo/blob/main/docs/about/</loc>
+    <loc>https://iankloo.github.io/course_site_demo/about/</loc>
     <lastmod>2016-05-05T21:48:51-07:00</lastmod>
   </url><url>
-    <loc>https://github.com/iankloo/course_site_demo/blob/main/docs/stats_concepts/</loc>
+    <loc>https://iankloo.github.io/course_site_demo/stats_concepts/</loc>
     <lastmod>2016-05-05T21:48:51-07:00</lastmod>
   </url><url>
-    <loc>https://github.com/iankloo/course_site_demo/blob/main/docs/categories/</loc>
+    <loc>https://iankloo.github.io/course_site_demo/categories/</loc>
   </url><url>
-    <loc>https://github.com/iankloo/course_site_demo/blob/main/docs/tags/</loc>
+    <loc>https://iankloo.github.io/course_site_demo/tags/</loc>
   </url>
 </urlset>

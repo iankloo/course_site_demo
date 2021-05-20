@@ -2,7 +2,7 @@
 
 This site is a shell that could be used as the main web resource for a course.  
 
-[](site_demo.png)
+![](site_demo.png)
 
 ### Design principles:
 

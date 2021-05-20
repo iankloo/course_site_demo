@@ -1,6 +1,8 @@
 # Course Website Concept Demo
 
-This site is a shell that could be used as the main web resource for a course.  
+This site is a shell that could be used as the main web resource for a course.
+
+[Link to running site](https://iankloo.github.io/course_site_demo)
 
 ![](site_demo.png)
 
